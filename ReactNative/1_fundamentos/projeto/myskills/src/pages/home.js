@@ -30,7 +30,7 @@ export function Home() {
 
  return (
   <View style={styles.container}>
-
+   
    <Text style={styles.title}>Welcome, Pessoa!!</Text>
 
    <Text style={styles.greetings}>
@@ -57,7 +57,6 @@ export function Home() {
      <SkillCard skill={item} />
     )}
    />
-
   </View>
  )
 }
