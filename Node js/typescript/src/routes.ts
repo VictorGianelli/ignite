@@ -8,6 +8,11 @@ export function createCourse(requert:Request,response:Response) {
   duration: 10,
   educator: "Dani"
  });
+ 
+ CreateCourse.execute({
+  name: "ReactJS",
+  educator: "Diego"
+ });
 
  return response.send();
 }
