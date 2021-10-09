@@ -23,9 +23,12 @@
     "rules": {
         "prettier/prettier": [
             "error",
-            // {
-            //     "endOfLine": "auto",
-            // }
+            {
+                "endOfLine": "auto"
+            },
+            {
+                "usePrettierrc": true
+            }
         ],
         "camelcase": "off",
         "import/no-unresolved": "error",
