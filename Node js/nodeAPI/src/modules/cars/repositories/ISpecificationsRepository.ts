@@ -1,14 +1,14 @@
-// import { Category } from "../model/Category";
+import { Specification } from "../model/Specification";
 
-// interface ICreateCategoryDTO {
-//   name: string;
-//   description: string;
-// }
+interface ICreateSpecificationDTO {
+  name: string;
+  description: string;
+}
 
-// interface ICategoriesRepository {
-//   findByName(name: string): Category;
-//   list(): Category[];
-//   create({ name, description }: ICreateCategoryDTO): void;
-// }
+interface ISpecificationsRepository {
+  create({ name, description }: ICreateSpecificationDTO): void;
+  findByName(name: string): Specification;
+  // list(): Specification[];
+}
 
-// export { ICategoriesRepository, ICreateCategoryDTO };
+export { ISpecificationsRepository, ICreateSpecificationDTO };

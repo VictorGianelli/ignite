@@ -1,12 +1,25 @@
-// import { CategoriesRepository } from "../repositories/CategoriesRepository";
+import { SpecificationsRepository } from "../repositories/SpecificationsRepository";
 
-// interface IRequest {}
+interface IRequest {
+  name: string;
+  description: string;
+}
 
 class CreateSpecificationService {
-  // constructor(private categoriesRepository: CategoriesRepository) { }
+  constructor(private specificationsRepository: SpecificationsRepository) {}
 
-  execute() {
-    console.log(""); // TODO
+  execute({ name, description }: IRequest): void {
+    const specificationAlreadyExists =
+      this.specificationsRepository.findByName(name);
+
+    if (specificationAlreadyExists) {
+      throw new Error("Specification already exists");
+    }
+
+    this.specificationsRepository.create({
+      name,
+      description,
+    });
   }
 }
 
