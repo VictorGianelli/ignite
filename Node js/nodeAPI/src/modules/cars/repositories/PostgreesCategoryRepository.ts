@@ -5,11 +5,11 @@ import {
 } from "./ICategoriesRepository";
 
 class PostgreesCategoryRepository implements ICategoriesRepository {
-  findByname(name: string): Category {
+  findByName(name: string): Category {
     console.log(name);
     return null;
   }
-  list(): Category {
+  list(): Category[] {
     return null;
   }
   create({ name, description }: ICreateCategoryDTO): void {
