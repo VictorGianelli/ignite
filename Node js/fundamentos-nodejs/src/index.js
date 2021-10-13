@@ -54,8 +54,6 @@ app.post("/account", (request, response) => {
   return response.status(201).send();
 })
 
-// app.use(verifyIfExistsAccount);
-
 app.get("/statement", verifyIfExistsAccount, (request, response) => {
   const { customer } = request;
 
@@ -131,6 +129,14 @@ app.get("/account", verifyIfExistsAccount, (request, response) => {
   const { customer } = request;
 
   return response.json(customer);
+})
+
+app.delete("/account", verifyIfExistsAccount, (request, response) => {
+  const { customer } = request;
+
+  customers.splice(customer, 1);
+
+  return response.status(200).send();
 })
 
 app.listen(3333)
