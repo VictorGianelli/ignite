@@ -17,15 +17,15 @@ function verifyIfExistsAccount(request, response, next) {
   }
 
   request.customer = customer;
-  console.log(request.customer)
+  // console.log(request.customer)
   return next();
 }
 
 function getBalance(statement) {
   const balance = statement.reduce((acc, operation) => {
-    if (operation.type === 'credit'){
-      return acc + operation.amount; 
-    }else{
+    if (operation.type === 'credit') {
+      return acc + operation.amount;
+    } else {
       return acc - operation.amount;
     }
   }, 0)
@@ -58,30 +58,30 @@ app.post("/account", (request, response) => {
 
 app.get("/statement", verifyIfExistsAccount, (request, response) => {
   const { customer } = request;
-  console.log(customer)
+
   return response.json(customer.statement);
 })
 
 app.post("/deposit", verifyIfExistsAccount, (request, response) => {
   const { description, amount } = request.body;
-  
+
   const { customer } = request;
 
   const statementOperation = {
-    description, 
+    description,
     amount,
     created_at: new Date(),
     type: "credit"
   };
 
   customer.statement.push(statementOperation);
-  
+
   return response.status(201).send();
 })
 
 app.post("/withdraw", verifyIfExistsAccount, (request, response) => {
   const { amount } = request.body;
-  
+
   const { customer } = request;
 
   const balance = getBalance(customer.statement);
@@ -93,12 +93,29 @@ app.post("/withdraw", verifyIfExistsAccount, (request, response) => {
   const statementOperation = {
     amount,
     created_at: new Date(),
-    type: "debit" 
+    type: "debit"
   };
 
   customer.statement.push(statementOperation);
-  
+
   return response.status(201).send();
+})
+
+app.get("/statement/date", verifyIfExistsAccount, (request, response) => {
+  const { customer } = request;
+  const { date } = request.query;
+
+  const dateFormat = new Date(date + "T00:00:00.000Z");
+  // console.log(statement.created_at)
+  // console.log(date)
+  // console.log(dateFormat)
+  const statement = customer.statement.filter(
+    (statement) =>
+      statement.created_at.toDateString() ===
+      new Date(dateFormat).toDateString()
+  )
+
+  return response.json(statement);
 })
 
 app.listen(3333)
