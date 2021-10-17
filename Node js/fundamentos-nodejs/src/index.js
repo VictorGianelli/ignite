@@ -1,5 +1,5 @@
 const express = require("express");
-const { v4: uuidv4 } = require('uuid')
+const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 
@@ -33,6 +33,7 @@ function getBalance(statement) {
   return balance;
 }
 
+//Create account
 app.post("/account", (request, response) => {
   const { cpf, name } = request.body;
 
