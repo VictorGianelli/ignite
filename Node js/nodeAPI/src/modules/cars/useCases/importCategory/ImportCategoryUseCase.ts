@@ -1,22 +1,17 @@
-import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
-
-interface IRequest {
-  name: string;
-  description: string;
-}
+import csvParse from "csv-parse";
+import fs from "fs";
 
 class ImportCategoryUseCase {
-  constructor(private categoriesRepository: ICategoriesRepository) {}
+  execute(file: Express.Multer.File): void {
+    const stream = fs.createReadStream(file.path);
 
-  execute(file: any) {
-    console.log(file);
-    // const categoryAlreadyExists = this.categoriesRepository.findByName(name);
+    const parseFile = csvParse();
 
-    // if (categoryAlreadyExists) {
-    //   throw new Error("Category already exists");
-    // }
+    stream.pipe(parseFile);
 
-    // this.categoriesRepository.create({ name, description });
+    parseFile.on("data", async (line) => {
+      console.log(line);
+    });
   }
 }
 
