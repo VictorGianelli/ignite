@@ -14,8 +14,8 @@
         "tags": [
           "Category"
         ],
-        "summary": "Returns a list of users.",
-        "description": "Optional extended description in CommonMark or HTML.",
+        "summary": "Post Categories",
+        "description": "Post Categories",
         "requestBody": {
           "content": {
             "application/json": {
@@ -43,6 +43,37 @@
           },
           "500": {
             "description": "Already exists"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "List categories.",
+        "description": "List categories.",
+        "responses": {
+          "200": {
+            "description": "Succes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "propeties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "name": "nome categoria",
+                    "description": "descrição categoria"
+                  }
+                }
+              }
+            }
           }
         }
       }
