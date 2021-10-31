@@ -77,6 +77,83 @@
           }
         }
       }
+    },
+    "/categories/import": {
+      "post": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Upload Categories",
+        "description": "Upload Categories",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "propeties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Already exists"
+          }
+        }
+      }
+    },
+    "/specifications": {
+      "post": {
+        "tags": [
+          "Specification"
+        ],
+        "summary": "Post Specification",
+        "description": "Post Specification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "Specification": {
+                  "type": "object",
+                  "propeties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "name": "nome specification",
+                    "description": "descrição specification"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Already exists"
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Specification": {
+        "$ref": "#/definitions/Specification"
+      }
     }
   }
 }
