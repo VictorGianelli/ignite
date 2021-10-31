@@ -1,6 +1,5 @@
 import { createConnection, getConnectionOptions } from "typeorm";
 
-console.log("Database");
 interface IOptions {
   host: string;
 }

@@ -3,6 +3,7 @@ docker ps -a #todos
 docker rm ID #remove
 docker start ID #inicia
 docker stop ID #Para
+docker logs rentx -f #Abre o llog
 docker-compose up -d #sobe o compose
 docker-compose up --force-recreate
 docker-compose stop #para 

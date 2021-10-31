@@ -7,7 +7,7 @@
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
     "dock-up": "docker-compose up -d",
-    "dock-stop": "docker-compose stop"
+    "dock-stop": "docker-compose stop" 
   },
   "dependencies": {
     "@types/multer": "^1.4.7",
